@@ -9,17 +9,22 @@ const resultDisplay = document.getElementById('resultado');
 const names = [];
 
 function adicionarAmigo() {
-  const name = nameInput.value.trim();
-  const nomeValido = /^[A-Za-z\s]+$/.test(name);
+  try {
+    const name = nameInput.value.trim();
+    const nomeValido = /^[A-Za-z\s]+$/.test(name);
 
-  if (nomeValido && name) {
-    names.push(name);
-    atualizarListaAmigos();
-    nameInput.value = '';
-    nameInput.focus();
-  } else {
-    console.log('Nome inválido:', name);
-    alert('Nome inválido. Por favor, digite apenas letras.');
+    if (nomeValido && name.length > 0) {
+      names.push(name);
+      atualizarListaAmigos();
+      nameInput.value = '';
+      nameInput.focus();
+    } else {
+      console.log('Nome inválido:', name);
+      alert('Nome inválido. Por favor, digite apenas letras.');
+    }
+  } catch (error) {
+    console.error('Ocorreu um erro ao adicionar um amigo:', error);
+    alert('Ocorreu um erro. Tente novamente.');
   }
 }
 
@@ -38,6 +43,3 @@ function sortearAmigo() {
 
   resultDisplay.innerHTML = `<li>O amigo secreto sorteado é: <strong>${selectedName}</strong>!</li>`;
 }
-
-addButton.addEventListener('click', adicionarAmigo);
-drawButton.addEventListener('click', sortearAmigo);
