@@ -26,7 +26,7 @@ git clone https://github.com/Ramon1337/desafioONE.git
 ```
 Navegue até o diretório do projeto:
 ```
-cd amigo-secreto
+cd desafioONE
 ```
 Abra o arquivo index.html diretamente no navegador.
 
